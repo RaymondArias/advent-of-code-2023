@@ -20,6 +20,7 @@ def read_calibration() -> int:
     with open('day01a/data/input') as f:
         lines = f.readlines()
         for line in lines:
+            line = line.strip()
             # Find first digit in line
             first_digit = get_first_digit(line=line)
             # Find last digit in line
