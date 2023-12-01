@@ -1,4 +1,4 @@
-
+# Map digit string to digit value
 digit_str_digit_map = {
     "one": "1",
     "two": "2",
@@ -8,16 +8,17 @@ digit_str_digit_map = {
     "six": "6",
     "seven": "7",
     "eight": "8",
-    "nine": "9"
+    "nine": "9",
 }
 
-def get_first_digit(line: str) -> str:   
-    line_length = len(line) 
-    for i,s in enumerate(line):
+
+def get_first_digit(line: str) -> str:
+    line_length = len(line)
+    for i, s in enumerate(line):
         # Check if value is a simple digit character
         if s.isdigit():
             return s
-        
+
         # Read the next values in the string and see if it matches the digit map
         current_value = ""
         # Read next 3 letters and check map
@@ -35,12 +36,13 @@ def get_first_digit(line: str) -> str:
             current_value = f"{current_value}{line[i+4]}"
             if current_value in digit_str_digit_map:
                 return digit_str_digit_map[current_value]
-            
+
     return "0"
+
 
 def get_last_digit(line: str) -> str:
     line_length = len(line) - 1
-    for i,s in enumerate(reversed(line)):
+    for i, s in enumerate(reversed(line)):
         if s.isdigit():
             return s
 
@@ -63,15 +65,14 @@ def get_last_digit(line: str) -> str:
             current_value = f"{line[line_length - i - 4]}{current_value}"
             if current_value in digit_str_digit_map:
                 return digit_str_digit_map[current_value]
-        
-    
+
     return "0"
-    
+
 
 def read_calibration() -> int:
     calibration = 0
-    
-    with open('day01b/data/input') as f:
+
+    with open("day01b/data/input") as f:
         lines = f.readlines()
         for line in lines:
             line = line.strip()
@@ -82,8 +83,8 @@ def read_calibration() -> int:
             # Combine into int
             num = int(f"{first_digit}{last_digit}")
             calibration += num
-        
-    
+
     return calibration
+
 
 print(read_calibration())
