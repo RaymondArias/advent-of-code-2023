@@ -6,7 +6,6 @@ def get_first_digit(line: str) -> str:
 
 
 def get_last_digit(line: str) -> str:
-
     for s in reversed(line):
         if s.isdigit():
             return s
